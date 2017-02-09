@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
-import App from './app';
+import { IndexRedirect, Router, Route, browserHistory } from 'react-router';
+import { App, Home, Login } from './app';
 
 const AppRouter = () => (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
+          <IndexRedirect to="/home" />
+          <Route path="home" component={Home} />
+          <Route path="login" component={Login} />
         </Route>
     </Router>
 );

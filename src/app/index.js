@@ -1,3 +1,5 @@
 import App from './app';
+import Home from './home';
+import Login from './login';
 
-export default App;
+export { App, Home, Login };
