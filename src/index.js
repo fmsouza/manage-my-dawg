@@ -6,8 +6,7 @@ import { App, Home, Login } from './app';
 const AppRouter = () => (
     <Router history={browserHistory}>
         <Route path="/" component={App}>
-          <IndexRedirect to="/home" />
-          <Route path="home" component={Home} />
+          <IndexRedirect to="/login" />
           <Route path="login" component={Login} />
         </Route>
     </Router>
