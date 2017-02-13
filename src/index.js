@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { IndexRedirect, Router, Route, browserHistory } from 'react-router';
-import { App, Home, Login } from './app';
+import { App, Login } from './app';
+import AppStore from './reducers';
 
 const AppRouter = () => (
-    <Router history={browserHistory}>
-        <Route path="/" component={App}>
-          <IndexRedirect to="/login" />
-          <Route path="login" component={Login} />
-        </Route>
-    </Router>
+    <Provider store={AppStore}>
+      <Router history={browserHistory}>
+          <Route path="/" component={App}>
+            <IndexRedirect to="/login" />
+            <Route path="login" component={Login} />
+          </Route>
+      </Router>
+    </Provider>
 );
 
 ReactDOM.render(

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Nav, NavItem } from 'react-bootstrap';
 import { LOGIN_USER_ADMIN, LOGIN_USER_GENERAL } from '../../actions';
 
 export default class NavMenu extends React.Component {
