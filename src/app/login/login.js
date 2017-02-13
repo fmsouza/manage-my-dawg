@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import LoginForm from './loginForm';
-import { attemptLogin, LOGIN_CODE_ERROR } from '../../actions';
+import { attemptLogin, LOGIN_CODE_ERROR, LOGIN_CODE_SUCCESS } from '../../actions';
 import './login.css';
 
 class Login extends React.Component {
@@ -14,7 +14,8 @@ class Login extends React.Component {
     componentWillUpdate(newProps) {
         if (newProps.loginCode === LOGIN_CODE_ERROR)
             this.form.wrappedInstance.setErrorMessage('Invalid username or password.');
-        else browserHistory.push('/dogs');
+        else if (newProps.loginCode === LOGIN_CODE_SUCCESS)
+            browserHistory.push('/dogs');
     }
 
     render() {
