@@ -1,5 +1,6 @@
 import React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { LOGIN_USER_ADMIN, LOGIN_USER_GENERAL } from '../../actions';
 
 export default class NavMenu extends React.Component {
@@ -7,10 +8,18 @@ export default class NavMenu extends React.Component {
     getAdminMenu() {
         return (
             <Nav {...this.props}>
-                <NavItem eventKey={1} href='/my-dogs'>My Dogs</NavItem>
-                <NavItem eventKey={2} href='/dogs'>View all dogs</NavItem>
-                <NavItem eventKey={3} href='/users'>View all users</NavItem>
-                <NavItem eventKey={4} href='/logout'>Log out</NavItem>
+                <LinkContainer eventKey={1} to={{ pathname: '/my-dogs' }}>
+                    <NavItem>My Dogs</NavItem>
+                </LinkContainer>
+                <LinkContainer eventKey={2} to={{ pathname: '/dogs' }}>
+                    <NavItem>Dogs</NavItem>
+                </LinkContainer>
+                <LinkContainer eventKey={3} to={{ pathname: '/users' }}>
+                    <NavItem>view all users</NavItem>
+                </LinkContainer>
+                <LinkContainer eventKey={4} to={{ pathname: '/logout' }}>
+                    <NavItem>Logout</NavItem>
+                </LinkContainer>
             </Nav>
         );
     }
@@ -18,8 +27,12 @@ export default class NavMenu extends React.Component {
     getUserMenu() {
         return (
             <Nav {...this.props}>
-                <NavItem eventKey={1} href='/my-dogs'>My Dogs</NavItem>
-                <NavItem eventKey={2} href='/logout'>Log out</NavItem>
+                <LinkContainer eventKey={1} to={{ pathname: '/my-dogs' }}>
+                    <NavItem>My Dogs</NavItem>
+                </LinkContainer>
+                <LinkContainer eventKey={2} to={{ pathname: '/logout' }}>
+                    <NavItem>Logout</NavItem>
+                </LinkContainer>
             </Nav>
         );
     }
@@ -27,7 +40,9 @@ export default class NavMenu extends React.Component {
     getLoginMenu() {
         return (
             <Nav {...this.props}>
-                <NavItem eventKey={1} href='/login'>Login</NavItem>
+                <LinkContainer eventKey={1} to={{ pathname: '/login' }}>
+                    <NavItem>Login</NavItem>
+                </LinkContainer>
             </Nav>
         );
     }
