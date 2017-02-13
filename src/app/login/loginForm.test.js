@@ -2,12 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
+import store from '../../reducers';
 import LoginForm from './loginForm';
 
 function setup(props = {}) {
-    const store = createStore(combineReducers({ form: formReducer }));
     return (
         <Provider store={store}>
             <LoginForm {...props} />

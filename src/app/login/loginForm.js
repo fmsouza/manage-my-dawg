@@ -6,11 +6,15 @@ class LoginForm extends React.Component {
 
     state = { errorMessage: '' };
 
+    setErrorMessage(errorMessage) {
+        this.setState({ errorMessage });
+    }
+
     onSubmit(values) {
         values.preventDefault();
-        this.setState({ errorMessage: '' });
+        this.setErrorMessage('');
         const { user, pass } = values.target;
-        if (!user || !pass || !user.value || ! pass.value) this.setState({ errorMessage: 'Both user and password must be filled.' });
+        if (!user || !pass || !user.value || ! pass.value) this.setErrorMessage('Both user and password must be filled.');
         else this.props.onHandleSubmit({ user: user.value, pass: pass.value });
     }
 
