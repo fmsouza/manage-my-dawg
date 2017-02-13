@@ -13,5 +13,5 @@ test('Header should render without crashing', () => {
 
 test('Header should have a NavMenu component', () => {
     const component = shallow(<Header />);
-    expect(component.contains(<NavMenu />)).toBeTruthy();
+    expect(component.contains(<NavMenu pullRight />)).toBeTruthy();
 });
