@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import LoginForm from './loginForm';
 import { attemptLogin, LOGIN_CODE_ERROR } from '../../actions';
 import './login.css';
@@ -11,8 +12,9 @@ class Login extends React.Component {
     }
 
     componentWillUpdate(newProps) {
-        if (this.props.loginCode === LOGIN_CODE_ERROR)
-            this.form.setErrorMessage('Invalid username or password.');
+        if (newProps.loginCode === LOGIN_CODE_ERROR)
+            this.form.wrappedInstance.setErrorMessage('Invalid username or password.');
+        else browserHistory.push('/dogs');
     }
 
     render() {
@@ -20,7 +22,7 @@ class Login extends React.Component {
             <div className="login">
                 <h1 className="center">Login</h1>
                 <LoginForm
-                    ref={ref => { this.form = ref; }}
+                    ref={refs => { this.form = refs; }}
                     onHandleSubmit={this.onSubmit.bind(this)}
                 />
             </div>
