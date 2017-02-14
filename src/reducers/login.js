@@ -1,6 +1,7 @@
 import {
     LOGIN_RESULT_SUCCESS,
     LOGIN_RESULT_FAILED,
+    LOGIN_DESTROY,
     LOGIN_CODE_SUCCESS,
     LOGIN_CODE_ERROR
 } from '../actions';
@@ -26,6 +27,12 @@ export default (state = initialState, action) => {
             newState.code = LOGIN_CODE_ERROR;
             newState.role = null;
             newState.token = null;
+            return newState;
+
+        case LOGIN_DESTROY:
+            newState.code = initialState.code;
+            newState.role = initialState.role;
+            newState.token = initialState.token;
             return newState;
 
         default: return newState;

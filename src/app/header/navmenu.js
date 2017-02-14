@@ -1,14 +1,20 @@
 import React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import { LOGIN_USER_ADMIN, LOGIN_USER_GENERAL } from '../../actions';
+import { LOGIN_USER_ADMIN, LOGIN_USER_GENERAL, attemptLogout } from '../../actions';
 
 class NavMenu extends React.Component {
 
+    onClickLogout() {
+        this.props.attemptLogout();
+        browserHistory.push('/login');
+    }
+
     getAdminMenu() {
         return (
-            <Nav {...this.props}>
+            <Nav pullRight={this.props.pullRight}>
                 <LinkContainer eventKey={1} to={{ pathname: '/my-dogs' }}>
                     <NavItem>My Dogs</NavItem>
                 </LinkContainer>
@@ -18,29 +24,25 @@ class NavMenu extends React.Component {
                 <LinkContainer eventKey={3} to={{ pathname: '/users' }}>
                     <NavItem>View all Users</NavItem>
                 </LinkContainer>
-                <LinkContainer eventKey={4} to={{ pathname: '/logout' }}>
-                    <NavItem>Logout</NavItem>
-                </LinkContainer>
+                <NavItem eventKey={4} onClick={this.onClickLogout.bind(this)}>Logout</NavItem>
             </Nav>
         );
     }
 
     getUserMenu() {
         return (
-            <Nav {...this.props}>
+            <Nav pullRight={this.props.pullRight}>
                 <LinkContainer eventKey={1} to={{ pathname: '/my-dogs' }}>
                     <NavItem>My Dogs</NavItem>
                 </LinkContainer>
-                <LinkContainer eventKey={2} to={{ pathname: '/logout' }}>
-                    <NavItem>Logout</NavItem>
-                </LinkContainer>
+                <NavItem eventKey={2} onClick={this.onClickLogout.bind(this)}>Logout</NavItem>
             </Nav>
         );
     }
 
     getLoginMenu() {
         return (
-            <Nav {...this.props}>
+            <Nav pullRight={this.props.pullRight}>
                 <LinkContainer eventKey={1} to={{ pathname: '/login' }}>
                     <NavItem>Login</NavItem>
                 </LinkContainer>
@@ -63,4 +65,10 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(NavMenu);
+function mapDispatchToProps(dispatch) {
+    return {
+        attemptLogout: () => dispatch(attemptLogout())
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavMenu);
