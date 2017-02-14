@@ -4,10 +4,18 @@ import { Field, reduxForm } from 'redux-form';
 
 class LoginForm extends React.Component {
 
-    state = { errorMessage: '' };
+    state = { errorMessage: '', isLoading: false };
 
     setErrorMessage(errorMessage) {
         this.setState({ errorMessage });
+    }
+
+    isLoading() {
+        this.setState({ isLoading: true });
+    }
+
+    finishedLoading() {
+        this.setState({ isLoading: false });
     }
 
     onSubmit(values) {
@@ -47,8 +55,12 @@ class LoginForm extends React.Component {
                 </FormGroup>
 
                 <FormGroup className="center" validationState={"error"}>
-                    <Button block type="submit">
-                        Sign in
+                    <Button
+                        type="submit"
+                        disabled={this.state.isLoading}
+                        block
+                    >
+                        { this.state.isLoading ? 'Logging in...' : 'Sign in' }
                     </Button>
                     <HelpBlock>{this.state.errorMessage}</HelpBlock>
                 </FormGroup>

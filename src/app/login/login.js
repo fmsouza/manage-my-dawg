@@ -9,9 +9,11 @@ class Login extends React.Component {
 
     onSubmit(data) {
         this.props.attemptLogin(data.user, data.pass);
+        this.form.wrappedInstance.isLoading();
     }
 
     componentWillUpdate(newProps) {
+        this.form.wrappedInstance.finishedLoading();
         if (newProps.loginCode === LOGIN_CODE_ERROR)
             this.form.wrappedInstance.setErrorMessage('Invalid username or password.');
         else if (newProps.loginCode === LOGIN_CODE_SUCCESS)
@@ -33,7 +35,8 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        loginCode: state.login.code
+        loginCode: state.login.code,
+        lastAttempt: state.login.lastAttempt
     };
 }
 

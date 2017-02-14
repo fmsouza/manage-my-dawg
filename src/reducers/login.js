@@ -9,7 +9,8 @@ import {
 const initialState = {
     code: null,
     role: null,
-    token: null
+    token: null,
+    lastAttempt: null
 };
 
 export default (state = initialState, action) => {
@@ -21,18 +22,21 @@ export default (state = initialState, action) => {
             newState.code = LOGIN_CODE_SUCCESS;
             newState.role = data.role;
             newState.token = data.token;
+            newState.lastAttempt = new Date();
             return newState;
 
         case LOGIN_RESULT_FAILED:
             newState.code = LOGIN_CODE_ERROR;
             newState.role = null;
             newState.token = null;
+            newState.lastAttempt = new Date();
             return newState;
 
         case LOGIN_DESTROY:
             newState.code = initialState.code;
             newState.role = initialState.role;
             newState.token = initialState.token;
+            newState.lastAttempt = initialState.lastAttempt;
             return newState;
 
         default: return newState;
