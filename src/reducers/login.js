@@ -16,10 +16,10 @@ export default (state = initialState, action) => {
     switch (action.type) {
 
         case LOGIN_RESULT_SUCCESS:
-            const { role, token } = action.payload;
+            const { data } = action.payload;
             newState.code = LOGIN_CODE_SUCCESS;
-            newState.role = role;
-            newState.token = token;
+            newState.role = data.role;
+            newState.token = data.token;
             return newState;
 
         case LOGIN_RESULT_FAILED:
