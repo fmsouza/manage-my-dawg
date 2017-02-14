@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-class Dogs extends React.Component {
+class Users extends React.Component {
 
     componentWillMount() {
-        console.log("Entered in dogs view", this.props);
+        console.log("Entered in users view", this.props);
     }
 
     render() {
         return (
             <div>
-                <h1>View all dogs</h1>
+                <h1>View all Users</h1>
             </div>
         );
     }
@@ -28,4 +28,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dogs);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

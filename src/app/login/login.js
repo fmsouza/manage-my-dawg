@@ -17,7 +17,7 @@ class Login extends React.Component {
         if (newProps.loginCode === LOGIN_CODE_ERROR)
             this.form.wrappedInstance.setErrorMessage('Invalid username or password.');
         else if (newProps.loginCode === LOGIN_CODE_SUCCESS)
-            browserHistory.push('/dogs');
+            browserHistory.push('/my-dogs');
     }
 
     render() {

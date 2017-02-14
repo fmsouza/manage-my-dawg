@@ -5,7 +5,9 @@ import Header from './header';
 
 export default props => (
   <div>
-    <Header />
+    <header>
+      <Header />
+    </header>
     <div className="container">
       {props.children}
     </div>

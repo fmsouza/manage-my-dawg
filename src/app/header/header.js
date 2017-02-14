@@ -10,6 +10,8 @@ export default () => (
                 <Link to="/">Manage my dawg</Link>
             </Navbar.Brand>
         </Navbar.Header>
-        <NavMenu pullRight />
+        <nav>
+            <NavMenu pullRight />
+        </nav>
     </Navbar>
 );
