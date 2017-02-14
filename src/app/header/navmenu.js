@@ -1,9 +1,10 @@
 import React from 'react';
 import { Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
 import { LOGIN_USER_ADMIN, LOGIN_USER_GENERAL } from '../../actions';
 
-export default class NavMenu extends React.Component {
+class NavMenu extends React.Component {
 
     getAdminMenu() {
         return (
@@ -55,3 +56,11 @@ export default class NavMenu extends React.Component {
         }
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        role: state.login.role
+    };
+}
+
+export default connect(mapStateToProps)(NavMenu);
