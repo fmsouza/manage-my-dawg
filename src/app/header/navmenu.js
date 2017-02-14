@@ -16,7 +16,7 @@ class NavMenu extends React.Component {
                     <NavItem>Dogs</NavItem>
                 </LinkContainer>
                 <LinkContainer eventKey={3} to={{ pathname: '/users' }}>
-                    <NavItem>view all users</NavItem>
+                    <NavItem>View all Users</NavItem>
                 </LinkContainer>
                 <LinkContainer eventKey={4} to={{ pathname: '/logout' }}>
                     <NavItem>Logout</NavItem>
